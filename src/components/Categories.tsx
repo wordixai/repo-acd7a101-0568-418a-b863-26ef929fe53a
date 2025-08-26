@@ -1,4 +1,4 @@
-import { Palette, Shirt, Glasses, Bag, Watch } from "lucide-react";
+import { Palette, Shirt, Glasses, ShoppingBag, Watch } from "lucide-react";
 
 const categories = [
   {
@@ -20,7 +20,7 @@ const categories = [
   {
     id: 3,
     name: "Bags",
-    icon: Bag,
+    icon: ShoppingBag,
     count: "60+ items",
     color: "pop-yellow",
     rotation: "rotate-1"
