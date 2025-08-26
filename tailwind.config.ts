@@ -61,12 +61,22 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				'pop-orange': 'hsl(var(--pop-orange))',
+				'pop-pink': 'hsl(var(--pop-pink))',
+				'pop-yellow': 'hsl(var(--pop-yellow))',
+				'pop-blue': 'hsl(var(--pop-blue))',
+				'pop-purple': 'hsl(var(--pop-purple))',
+				'pop-red': 'hsl(var(--pop-red))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				'comic': ['Fredoka One', 'cursive'],
+				'handwritten': ['Kalam', 'cursive']
 			},
 			keyframes: {
 				'accordion-down': {
@@ -84,11 +94,49 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'bounce-in': {
+					'0%': {
+						transform: 'scale(0.3) rotate(-5deg)',
+						opacity: '0'
+					},
+					'50%': {
+						transform: 'scale(1.05) rotate(2deg)'
+					},
+					'70%': {
+						transform: 'scale(0.9) rotate(-1deg)'
+					},
+					'100%': {
+						transform: 'scale(1) rotate(0deg)',
+						opacity: '1'
+					}
+				},
+				'wiggle': {
+					'0%, 7%': {
+						transform: 'rotateZ(0deg)'
+					},
+					'15%': {
+						transform: 'rotateZ(-5deg)'
+					},
+					'20%': {
+						transform: 'rotateZ(5deg)'
+					},
+					'25%': {
+						transform: 'rotateZ(-3deg)'
+					},
+					'30%': {
+						transform: 'rotateZ(3deg)'
+					},
+					'35%, 100%': {
+						transform: 'rotateZ(0deg)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'bounce-in': 'bounce-in 0.6s ease-out',
+				'wiggle': 'wiggle 2s ease-in-out infinite'
 			}
 		}
 	},

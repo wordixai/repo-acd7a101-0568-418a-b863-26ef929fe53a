@@ -1,27 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Kalam:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-   
-  }
-
-  .dark {
-
+    /* Pop Art Color Palette */
+    --pop-orange: 25 95% 53%;
+    --pop-pink: 326 100% 74%;
+    --pop-yellow: 48 100% 67%;
+    --pop-blue: 195 100% 50%;
+    --pop-purple: 280 100% 70%;
+    --pop-red: 348 83% 47%;
+    
+    /* Design System Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --primary: var(--pop-orange);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--pop-pink);
+    --secondary-foreground: 0 0% 0%;
+    --accent: var(--pop-yellow);
+    --accent-foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: var(--pop-orange);
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --radius: 1rem;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+/* Pop Art Dot Pattern Background */
+.dots-pattern {
+  background-image: radial-gradient(circle, hsl(var(--pop-pink)) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
 
-  body {
-    @apply bg-background text-foreground;
+.dots-pattern-orange {
+  background-image: radial-gradient(circle, hsl(var(--pop-orange)) 1.5px, transparent 1.5px);
+  background-size: 25px 25px;
+}
+
+.dots-pattern-blue {
+  background-image: radial-gradient(circle, hsl(var(--pop-blue)) 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+/* Comic Book Style Border */
+.comic-border {
+  border: 4px solid black;
+  box-shadow: 4px 4px 0px black;
+}
+
+.comic-border-white {
+  border: 3px solid white;
+  box-shadow: 3px 3px 0px white;
+}
+
+/* Hand-drawn style effects */
+.handdrawn {
+  filter: url(#roughPaper);
+}
+
+/* Pop Art Gradient Backgrounds */
+.pop-gradient-1 {
+  background: linear-gradient(135deg, hsl(var(--pop-orange)) 0%, hsl(var(--pop-pink)) 100%);
+}
+
+.pop-gradient-2 {
+  background: linear-gradient(45deg, hsl(var(--pop-pink)) 0%, hsl(var(--pop-purple)) 100%);
+}
+
+.pop-gradient-3 {
+  background: linear-gradient(180deg, hsl(var(--pop-yellow)) 0%, hsl(var(--pop-orange)) 100%);
+}
+
+/* Typography */
+.font-comic {
+  font-family: 'Fredoka One', cursive;
+}
+
+.font-handwritten {
+  font-family: 'Kalam', cursive;
+}
+
+/* Bounce Animation */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3) rotate(-5deg);
+    opacity: 0;
   }
+  50% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(-1deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0deg);
+  }
+  15% {
+    transform: rotateZ(-5deg);
+  }
+  20% {
+    transform: rotateZ(5deg);
+  }
+  25% {
+    transform: rotateZ(-3deg);
+  }
+  30% {
+    transform: rotateZ(3deg);
+  }
+  35% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out;
+}
+
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+/* Button Variants */
+.btn-pop {
+  @apply bg-primary text-primary-foreground font-comic text-lg px-6 py-3 rounded-2xl comic-border transform transition-all duration-200 hover:scale-105 hover:rotate-1 active:scale-95;
+}
+
+.btn-pop-secondary {
+  @apply bg-secondary text-secondary-foreground font-comic text-lg px-6 py-3 rounded-2xl comic-border transform transition-all duration-200 hover:scale-105 hover:-rotate-1 active:scale-95;
+}
+
+.btn-pop-accent {
+  @apply bg-accent text-accent-foreground font-comic text-lg px-6 py-3 rounded-2xl comic-border transform transition-all duration-200 hover:scale-105 hover:rotate-2 active:scale-95;
+}
+
+/* Product Card Styles */
+.product-frame {
+  @apply bg-white rounded-3xl comic-border p-4 transform transition-all duration-300 hover:scale-105 hover:rotate-1 hover:shadow-lg;
+}
+
+.product-frame:nth-child(even) {
+  @apply hover:-rotate-1;
+}
+
+/* Halftone Effects */
+.halftone::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px);
+  background-size: 10px 10px;
+  pointer-events: none;
+  mix-blend-mode: multiply;
 }
