@@ -4,6 +4,7 @@ import Categories from "@/components/Categories";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
+import CartSidebar from "@/components/CartSidebar";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <FeaturedProducts />
       <Newsletter />
       <Footer />
+      <CartSidebar />
     </div>
   );
 };

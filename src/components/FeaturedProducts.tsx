@@ -1,6 +1,7 @@
-import { Heart, ShoppingCart, Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import AddToCartButton from "@/components/AddToCartButton";
 
 const products = [
   {
@@ -88,7 +89,7 @@ const FeaturedProducts = () => {
                 {/* Badges */}
                 <div className="absolute top-2 left-2 flex flex-col gap-2">
                   {product.isNew && (
-                    <Badge className="bg-pop-green text-white font-comic comic-border-white">
+                    <Badge className="bg-green-500 text-white font-comic comic-border-white">
                       NEW!
                     </Badge>
                   )}
@@ -113,9 +114,11 @@ const FeaturedProducts = () => {
 
                 {/* Quick Add Button */}
                 <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Button size="sm" className="btn-pop text-sm animate-bounce-in">
-                    Quick Add
-                  </Button>
+                  <AddToCartButton 
+                    product={product} 
+                    size="sm" 
+                    className="text-sm animate-bounce-in"
+                  />
                 </div>
               </div>
 
@@ -152,10 +155,10 @@ const FeaturedProducts = () => {
                   )}
                 </div>
 
-                <Button className="w-full btn-pop group-hover:animate-wiggle">
-                  <ShoppingCart className="w-4 h-4 mr-2" />
-                  Add to Cart
-                </Button>
+                <AddToCartButton 
+                  product={product} 
+                  className="w-full group-hover:animate-wiggle"
+                />
               </div>
             </div>
           ))}

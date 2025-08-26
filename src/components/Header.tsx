@@ -1,10 +1,14 @@
 import { ShoppingCart, Heart, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useCartStore } from "@/store/cartStore";
 
 const Header = () => {
+  const { toggleCart, getTotalItems } = useCartStore();
+  const totalItems = getTotalItems();
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-white comic-border-white">
+    <header className="sticky top-0 z-40 w-full bg-white comic-border-white">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -35,11 +39,18 @@ const Header = () => {
               <Heart className="w-6 h-6" />
             </Button>
             
-            <Button variant="ghost" size="icon" className="relative hover:bg-pop-orange/20 rounded-full">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="relative hover:bg-pop-orange/20 rounded-full"
+              onClick={toggleCart}
+            >
               <ShoppingCart className="w-6 h-6" />
-              <Badge className="absolute -top-2 -right-2 bg-pop-red text-white comic-border-white text-xs">
-                3
-              </Badge>
+              {totalItems > 0 && (
+                <Badge className="absolute -top-2 -right-2 bg-pop-red text-white comic-border-white text-xs animate-bounce">
+                  {totalItems}
+                </Badge>
+              )}
             </Button>
 
             <Button variant="ghost" size="icon" className="md:hidden">
